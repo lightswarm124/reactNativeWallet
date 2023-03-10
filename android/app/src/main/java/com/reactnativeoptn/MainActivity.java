@@ -4,6 +4,7 @@ import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactActivityDelegate;
+import android.os.Bundle;
 
 public class MainActivity extends ReactActivity {
 
@@ -14,6 +15,15 @@ public class MainActivity extends ReactActivity {
   @Override
   protected String getMainComponentName() {
     return "reactNativeOPTN";
+  }
+
+  /**
+   * This change is required to avoid crashes related to View state being not persisted consistently across Activity restarts.  
+   * https://reactnavigation.org/docs/getting-started/ v 6.x
+   */
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(null);
   }
 
   /**
